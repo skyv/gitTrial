@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Image mapping</title>
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="css/imgareaselect-default.css" />
+  <script type="text/javascript" src="scripts/jquery.min.js"></script>
+  <script type="text/javascript" src="scripts/jquery.imgareaselect.pack.js"></script>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div style="text-align: center; width: 50%; float: left;">
+        <img id="ladybug" src="./ladybug.jpg" alt="A ladybug enjoying the fine afternoon." title="A ladybug enjoying the fine afternoon." usemap="#ladybugmap" />
+        <map name="ladybugmap">
+          <area shape="rect" coords="153, 105, 240, 210 " href="www.google.com" alt="ladybug">
+        </map>
+      </div>
+
+        <div style="width: 50%; float: left;">
+          <form action="examples-callback.html#submitting-selection-coordinates-demo" method="post">
+           <input id="x1" type="hidden" name="x1" value="">
+           <input id="y1" type="hidden" name="y1" value="">
+           <input id="x2" type="hidden" name="x2" value="">
+           <input id="y2" type="hidden" name="y2" value="">
+           <input type="submit" name="submit" value="Submit">
+          </form>
+
+
+         <h4>Submitted data:</h4>
+         
+         <p>
+          <strong>x1</strong>: 152<br>
+          <strong>y1</strong>: 95<br>
+          <strong>x2</strong>: 244<br>
+          <strong>y2</strong>: 223
+        </p>  
+
+
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('img#ladybug').imgAreaSelect({
+            handles: true,
+            onSelectEnd: function (img, selection) {
+              console.log('x1: ' + selection.x1 + '; y1: ' + selection.y1+ '; x2: ' + selection.x2+ '; y2: ' + selection.y2);
+            }
+        });
+      });
+    </script>
+  </body>
+  </html>
